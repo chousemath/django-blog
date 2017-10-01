@@ -17,11 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from posts import views
+import posts.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^posts/(?P<post_id>[0-9]+)/$', views.show, name='show'),
-    url(r'^about/', views.about, name='about'),
-    url(r'^$', views.index, name="index"),
+    url(r'^posts/(?P<post_id>[0-9]+)/$', posts.views.show, name='show'),
+    url(r'^about/', posts.views.about, name='about'),
+    url(r'^$', posts.views.index, name="index"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

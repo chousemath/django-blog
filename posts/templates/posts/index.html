@@ -20,6 +20,9 @@
       <a href="{% url 'index' %}" class="pure-menu-heading pure-menu-link">Welcome to My Blog</a>
       <ul class="pure-menu-list">
         <li class="pure-menu-item"><a href="{% url 'about' %}" class="pure-menu-link">About</a></li>
+        {% for link in links %}
+          <li class="pure-menu-item"><a href="{{ link.url }}" class="pure-menu-link">{{ link.title }}</a></li>
+        {% endfor %}
         <li class="pure-menu-item"><a href="https://www.djangoproject.com/" class="pure-menu-link">Django</a></li>
         <li class="pure-menu-item"><a href="https://purecss.io/" class="pure-menu-link">PureCSS</a></li>
       </ul>
@@ -29,6 +32,8 @@
       <div class="pure-u-1-24"></div>
       <div class="pure-u-22-24" style="text-align: center;">
         <h3>latest posts</h3>
+        {% load static %}
+        <img src="{% static 'posts/icons8-South Korea-96.png' %}" />
         {% for post in posts.all %}
 
           <table class="pure-table pure-table-horizontal" style="width: 100%;">
