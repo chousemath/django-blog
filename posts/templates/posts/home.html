@@ -1,1 +1,11 @@
-<h1>home page</h1>
+<h1>welcome to my blog</h1>
+
+<h3>latest posts</h3>
+{% for post in posts.all %}
+<p><b>{{ post.title }}</b></p>
+<ul>
+  <li>{{ post.pub_date_formatted }}</li>
+  <li>{{ post.body_summary }}</li>
+  <li>{{ post.body_reverse }}</li>
+</ul>
+{% endfor %}
