@@ -2,7 +2,8 @@
 
 <h3>latest posts</h3>
 {% for post in posts.all %}
-<p><b>{{ post.title }}</b></p>
+<p><b><a href="{% url 'show' post.id %}">{{ post.title }}</a></b></p>
+<img src="{{ post.image.url }}" style="max-width: 300px;" />
 <ul>
   <li>{{ post.pub_date_formatted }}</li>
   <li>{{ post.body_summary }}</li>
