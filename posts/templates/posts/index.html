@@ -1,12 +1,66 @@
-<h1>welcome to my blog</h1>
+<!doctype html>
 
-<h3>latest posts</h3>
-{% for post in posts.all %}
-<p><b><a href="{% url 'show' post.id %}">{{ post.title }}</a></b></p>
-<img src="{{ post.image.url }}" style="max-width: 300px;" />
-<ul>
-  <li>{{ post.pub_date_formatted }}</li>
-  <li>{{ post.body_summary }}</li>
-  <li>{{ post.body_reverse }}</li>
-</ul>
-{% endfor %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>blog home</title>
+    <meta name="description" content="blog home">
+    <meta name="author" content="joseph">
+
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+    <div class="pure-menu pure-menu-horizontal" style="padding: 15px;">
+      <a href="{% url 'index' %}" class="pure-menu-heading pure-menu-link">Welcome to My Blog</a>
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="{% url 'about' %}" class="pure-menu-link">About</a></li>
+        <li class="pure-menu-item"><a href="https://www.djangoproject.com/" class="pure-menu-link">Django</a></li>
+        <li class="pure-menu-item"><a href="https://purecss.io/" class="pure-menu-link">PureCSS</a></li>
+      </ul>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-24"></div>
+      <div class="pure-u-22-24" style="text-align: center;">
+        <h3>latest posts</h3>
+        {% for post in posts.all %}
+
+          <table class="pure-table pure-table-horizontal" style="width: 100%;">
+            <thead>
+              <tr>
+                <th><a class="pure-button pure-button-active pure-button-primary" href="{% url 'show' post.id %}">{{ post.title }}</a></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><img src="{{ post.image.url }}" style="max-width: 300px;" /></td>
+              </tr>
+
+              <tr>
+                <td><p>{{ post.pub_date_formatted }}</p></td>
+              </tr>
+
+              <tr>
+                <td><p>{{ post.body_summary }}</p></td>
+              </tr>
+
+              <tr>
+                <td><p>{{ post.body_reverse }}</p></td>
+              </tr>
+            </tbody>
+          </table>
+
+        {% endfor %}
+      </div>
+      <div class="pure-u-1-24"></div>
+    </div>
+
+  </body>
+</html>

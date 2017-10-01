@@ -9,13 +9,13 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def pub_date_formatted(self):
+    def pub_date_formatted(self) -> str:
         return self.pub_date.strftime('%b %e %Y')
 
-    def body_summary(self):
+    def body_summary(self) -> str:
         return self.body[:100]
 
-    def body_reverse(self):
+    def body_reverse(self) -> str:
         reversed_body = ''
         for c in self.body:
             reversed_body = c + reversed_body
